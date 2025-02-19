@@ -1,0 +1,78 @@
+all_contacts={}
+
+class Contact:
+    def __init__(self,address,number):
+        self.address=address
+        self.number=number
+
+    def __str__(self):
+        return f"{self.number} ,{self.address}"
+
+
+class Person:
+    def __init__(self,name,emp_id,email,contact_details):
+        self.name=name
+        self.emp_id=emp_id
+        self.email=email   
+        for contact in contact_details: 
+         if isinstance(contact,Contact):
+            if type(contact_details)!=list:
+                raise Exception("there is object type error")
+            else:
+                self.contact_details=contact_details
+         else:
+            raise Exception("Object not from actual class")
+
+    
+    def print_contact_details(self):
+       for contact in self.contact_details:
+           print(contact)
+   
+
+
+class Employee(Person):
+    def __init__(self,name,id,email,contact_details,salary,designation):
+        super().__init__(name,id,email,contact_details)
+        self.salary=salary
+        self.designation=designation
+
+
+
+# Function to Check if the contact already exists
+isContact=False
+
+def create_contact(number,address,name):
+    global isContact
+    for key in all_contacts.keys():
+        if key==number:
+            isContact=True
+            break
+    if isContact==False:
+        contact_obj=Contact(number,address)
+        all_contacts[number]=contact_obj
+    return contact_obj
+
+
+# def getNumber(emp_id):
+#     Employee.con
+
+
+
+# print(Employee.contact_details)   
+
+
+
+
+
+c1=create_contact(987647882,"coorg","varsha")
+c2=create_contact(887647882,"mysore","varsha")
+c3=create_contact(887647882,"banglore","vamshi")
+# print(all_contacts)
+
+p1=Person("varsha",12,"varsha@gmail.com",[c1,c2])
+p2=Person("varsha",12,"varsha@gmail.com",[c3])
+
+
+p1.print_contact_details()
+
+
