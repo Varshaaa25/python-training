@@ -53,27 +53,34 @@ def create_contact(address,number,name):
     else:
         global contact_obj
         contact_obj=Contact(address,number)
-        all_contacts[number]=contact_obj
+        all_contacts[number]=name
        
     return contact_obj
 
-
+# function to get a person's details
 def getDetails(name,People):
     for person in People:
         if person.name==name:
             print(f"Person details are = name:{person.name}, emap_id:{person.emp_id}, email:{person.email}")
 
+#function to get Phone number of a person
+def getNumber(name):
+    for key,value in all_contacts.items():
+        count=0
+        if name == value:
+            print(f"Phone number of {name} is {key}")
+
 
 c1=create_contact("coorg",987647882,"varsha")
-c2=create_contact("coorg",887647882,"varsha")
-c3=create_contact("banglore",6687647882,"vamshi")
+c2=create_contact("banglore",6687647882,"vamshi")
 # print(all_contacts)
 
-p1=Person("varsha",12,"varsha@gmail.com",[c1,c2])
-p2=Person("vamshi",12,"varsha@gmail.com",[c3])
+p1=Person("varsha",12,"varsha@gmail.com",[c1])
+p2=Person("vamshi",12,"vamshi@gmail.com",[c2])
 
 People=[p1,p2]
 
 # p1.print_contact_details()
 
 getDetails("varsha",People)
+getNumber("varsha")
