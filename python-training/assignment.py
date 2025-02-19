@@ -54,7 +54,9 @@ class Product:
 
     def __str__(self):
         return f"{self.category}{self.name}{self.price}{self.rating}{self.brand}"
-    
+
+
+    # display method
     def display(self):   
         list=[self.category.name]    
         for cat in self.category.par_category:
@@ -64,12 +66,13 @@ class Product:
         print("-".join(list))
 
 
+# filter products based on leaf node
 def filter_products(leaf,all_products:list):
     for products in all_products:
         if products.category==leaf:
             print(products.name)
 
-
+# filter products based on any node
 def all_products(any_node,all_products:list):
     for product in all_products:
         if any_node==product.category:
@@ -104,9 +107,9 @@ p3=Product("ios1",100000,5,ios,[b1])
 p4=Product("whirlpool",100000,5,washing_machine,[b1]) 
 p5=Product("wooden_sofa",100000,5,sofa,[b1]) 
 
-# p1.display()
-# filter_products(android,[p1,p2,p3,p4,p5])
-all_products(ios,[p1,p2,p3,p4,p5])
+p1.display()
+filter_products(android,[p1,p2,p3,p4,p5])
+all_products(electronics,[p1,p2,p3,p4,p5])
 
 
 
