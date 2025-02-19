@@ -63,16 +63,21 @@ def getDetails(name,People):
         if person.name==name:
             print(f"Person details are = name:{person.name}, emap_id:{person.emp_id}, email:{person.email}")
 
+
 #function to get Phone number of a person
 def getNumber(name):
+    Number=[]
     for key,value in all_contacts.items():
-        count=0
         if name == value:
-            print(f"Phone number of {name} is {key}")
+            Number.append(key)
+    Number=",".join(map(str,Number))
+    print(f"Phone number of {name} is {Number}")
+            
 
 
 c1=create_contact("coorg",987647882,"varsha")
 c2=create_contact("banglore",6687647882,"vamshi")
+c3=create_contact("coorg",6789037883,"varsha")
 # print(all_contacts)
 
 p1=Person("varsha",12,"varsha@gmail.com",[c1])
