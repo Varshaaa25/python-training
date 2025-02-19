@@ -41,38 +41,39 @@ class Employee(Person):
 # Function to Check if the contact already exists
 isContact=False
 
-def create_contact(number,address,name):
+def create_contact(address,number,name):
     global isContact
     for key in all_contacts.keys():
         if key==number:
             isContact=True
             break
-    if isContact==False:
-        contact_obj=Contact(number,address)
+    if isContact==True:
+        print("Error:Contact already exists")
+        
+    else:
+        global contact_obj
+        contact_obj=Contact(address,number)
         all_contacts[number]=contact_obj
+       
     return contact_obj
 
 
-# def getNumber(emp_id):
-#     Employee.con
+def getDetails(name,People):
+    for person in People:
+        if person.name==name:
+            print(f"Person details are = name:{person.name}, emap_id:{person.emp_id}, email:{person.email}")
 
 
-
-# print(Employee.contact_details)   
-
-
-
-
-
-c1=create_contact(987647882,"coorg","varsha")
-c2=create_contact(887647882,"mysore","varsha")
-c3=create_contact(887647882,"banglore","vamshi")
+c1=create_contact("coorg",987647882,"varsha")
+c2=create_contact("coorg",887647882,"varsha")
+c3=create_contact("banglore",6687647882,"vamshi")
 # print(all_contacts)
 
 p1=Person("varsha",12,"varsha@gmail.com",[c1,c2])
-p2=Person("varsha",12,"varsha@gmail.com",[c3])
+p2=Person("vamshi",12,"varsha@gmail.com",[c3])
 
+People=[p1,p2]
 
-p1.print_contact_details()
+# p1.print_contact_details()
 
-
+getDetails("varsha",People)
